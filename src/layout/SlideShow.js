@@ -81,6 +81,7 @@ class SlideShow extends React.Component {
         activeIndex={activeIndex}
         next={this.next}
         previous={this.previous}
+        style={{ marginTop: 16 }}
       >
         <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
         {slides}
