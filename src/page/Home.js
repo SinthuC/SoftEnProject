@@ -140,7 +140,7 @@ class Home extends React.Component {
         const { getNews } = this;
         return (
             <div>
-                <Container>
+                <Container style={styles.section}>
                     <Row style={styles.section}>
                         <Col>
                             <SlideShow />
