@@ -34,8 +34,8 @@ class NavBar extends React.Component {
     const { toggle } = this;
     return (
       <div>
-        <Navbar dark expand="md" style={{ backgroundColor: 'green', marginBottom: 16 }}>
-          <Container>
+        <Navbar dark expand="md" style={{ backgroundColor: 'green' }}>
+          <Container fluid>
             <NavbarBrand href="/" className="mr-auto">Test</NavbarBrand>
             <NavbarToggler onClick={() => toggle(isOpen)} className="mr-2" />
             <Collapse isOpen={isOpen} navbar>
