@@ -5,6 +5,11 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  FormText
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import {
@@ -15,17 +20,26 @@ const SignInModal = props => (
   <Modal isOpen={props.auth.toggleSignIn} toggle={props.toggleSignIn}>
     <ModalHeader toggle={props.toggleSignUp}>Sign In</ModalHeader>
     <ModalBody>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <Form>
+        <FormGroup>
+          <Label for="exampleEmail">Username</Label>
+          <Input type="email" name="email" id="Username" placeholder="Your Email" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="examplePassword">Password</Label>
+          <Input type="password" name="password" id="Password" placeholder="Your Password" />
+        </FormGroup>
+        </Form>
           </ModalBody>
-    <ModalFooter>
-      <Button color="primary" onClick={props.toggleSignIn}>Sign in</Button>{' '}
-      <Button color="secondary" onClick={props.toggleSignIn}>Cancel</Button>
-    </ModalFooter>
+      <ModalFooter>
+        <Button color="success" onClick={props.toggleSignIn}>Sign in</Button>{' '}
+        <Button color="secondary" onClick={props.toggleSignIn}>Cancel</Button>
+      </ModalFooter>
   </Modal>
-);
-
+    );
+    
 const mapStateToProps = state => ({
-  auth: state.auth,
-});
-
-export default connect(mapStateToProps, { toggleSignIn })(SignInModal);
+      auth: state.auth,
+  });
+  
+export default connect(mapStateToProps, {toggleSignIn})(SignInModal);
