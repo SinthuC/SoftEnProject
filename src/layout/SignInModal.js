@@ -22,12 +22,12 @@ const SignInModal = props => (
     <ModalBody>
     <Form>
         <FormGroup>
-          <Label for="exampleEmail">Username</Label>
-          <Input type="email" name="email" id="Username" placeholder="Your Email" />
+          <Label for="email">Username</Label>
+          <Input type="email" name="email" id="username" placeholder="Your Email" />
         </FormGroup>
         <FormGroup>
-          <Label for="examplePassword">Password</Label>
-          <Input type="password" name="password" id="Password" placeholder="Your Password" />
+          <Label for="password">Password</Label>
+          <Input type="password" name="password" id="password" placeholder="Your Password" />
         </FormGroup>
         </Form>
           </ModalBody>
