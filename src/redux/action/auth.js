@@ -1,9 +1,15 @@
+import axios from 'axios';
+require('dotenv').config();
+
 const signin = (username, password) => ({
-  type: 'FETCH_SIGN_IN',
-  payload: {
-    name: 'Admin',
-    role: 'admin',
-  },
+  type: 'SIGN_IN',
+  payload: axios.post(
+    `http://10.199.66.227/SoftEn2018/Sec01_NMB/api/user/signin.php`,
+    {
+      username: username,
+      password: password,
+    }
+  )
 });
 
 const toggleSignIn = (isOpen) => ({
@@ -31,4 +37,5 @@ export {
   toggleSignUp,
   setUsername,
   setPassword,
+  signin,
 };
