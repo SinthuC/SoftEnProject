@@ -9,7 +9,8 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText
+  FormText,
+  Alert
 } from 'reactstrap';
 
 import { connect } from 'react-redux';
@@ -17,39 +18,62 @@ import {
   toggleSignIn,
   setUsername,
   setPassword,
-} from '../redux/action/auth';
+  onSignIn,
+} from '../redux/action/signin';
 
 const SignInModal = props => (
-  <Modal isOpen={props.auth.toggleSignIn} toggle={props.toggleSignIn}>
+  <Modal isOpen={props.signin.toggleSignIn} toggle={props.toggleSignIn}>
     <ModalHeader toggle={props.toggleSignIn}>Sign In</ModalHeader>
-    <Form onValidSubmit={()=>{console.log("Submit")}}>
+    <Form onSubmit={e => {
+      e.preventDefault();
+      props.onSignIn(props.signin.username, props.signin.password);
+    }}>
       <ModalBody>
         <FormGroup>
+          {
+            props.signin.error || !props.signin.success ? (
+              <Alert color="danger">
+                {props.signin.message}
+              </Alert>
+            ) : false
+          }
           <Label for="username">Username</Label>
-          <Input type="text" name="username" id="username" value={props.auth.username} onChange={ e => props.setUsername(e.target.value) } required />
-          
+          <Input
+            type="text"
+            name="username"
+            id="username"
+            value={props.signin.username}
+            minLength={4}
+            maxLength={20}
+            onChange={e => props.setUsername(e.target.value)}
+            disabled={props.signin.loading}
+            required
+          />
         </FormGroup>
-
         <FormGroup>
           <Label for="password">Password</Label>
-          <Input name="password" id="password" type="password" value={props.auth.password} onChange={ e => props.setPassword(e.target.value) }  required />
-          
+          <Input
+            name="password"
+            id="password"
+            type="password"
+            value={props.signin.password}
+            minLength={8}
+            maxLength={20}
+            onChange={e => props.setPassword(e.target.value)}
+            disabled={props.signin.loading}
+            required />
         </FormGroup>
-
-
       </ModalBody>
       <ModalFooter>
-        
-        <Button color="success" type="submit" name="submit">Sign in</Button>{' '}
-        <Button color="secondary" onClick={props.toggleSignIn}>Cancel</Button>
-
+        <Button color="success" type="submit" id="submit" disabled={props.signin.loading}>Sign in</Button>{' '}
+        <Button color="secondary" id="cancel" disabled={props.signin.loading} onClick={props.toggleSignIn}>Cancel</Button>
       </ModalFooter>
     </Form>
   </Modal>
 );
 
 const mapStateToProps = state => ({
-  auth: state.auth,
+  signin: state.signin,
 });
 
-export default connect(mapStateToProps, { toggleSignIn,setUsername,setPassword })(SignInModal);
+export default connect(mapStateToProps, { toggleSignIn, setUsername, setPassword, onSignIn })(SignInModal);

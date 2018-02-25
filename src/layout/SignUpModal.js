@@ -14,10 +14,10 @@ import {
 import { connect } from 'react-redux';
 import {
   toggleSignUp
-} from '../redux/action/auth';
+} from '../redux/action/signup';
 
 const SignUpModal = props => (
-  <Modal isOpen={props.auth.toggleSignUp} toggle={props.toggleSignUp}>
+  <Modal isOpen={props.signup.toggleSignUp} toggle={props.toggleSignUp}>
     <ModalHeader toggle={props.toggleSignUp}>Sign Up</ModalHeader>
     <Form>
     <ModalBody>
@@ -34,6 +34,14 @@ const SignUpModal = props => (
           <Label for="Cpassword">Confirm Password*</Label>
           <Input type="password" name="Cpassword" id="Cpassword" placeholder="Your Password" required />
         </FormGroup>
+        {/* <FormGroup>
+          <Label for="date">Date</Label>
+          <Input type="date" name="date" id="date" onChange={e => {console.log(e.target.value)}} required />
+        </FormGroup>
+        <FormGroup>
+          <Label for="time">Time</Label>
+          <Input type="time" name="time" id="time" onChange={e => {console.log(e.target.value)}} required />
+        </FormGroup> */}
         <FormGroup>
           <Label for="id">ID Number*</Label>
           <Input type="text" name="id" id="id" placeholder="Your ID Number"  required/>
@@ -50,7 +58,7 @@ const SignUpModal = props => (
 );
 
 const mapStateToProps = state => ({
-  auth: state.auth,
+  signup: state.signup,
 });
 
 export default connect(mapStateToProps, { toggleSignUp })(SignUpModal);
