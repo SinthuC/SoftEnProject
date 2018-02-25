@@ -11,9 +11,11 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import {
-  toggleSignUp,
   toggleSignIn,
-} from '../redux/action/auth';
+} from '../redux/action/signin';
+import {
+  toggleSignUp,
+} from '../redux/action/signup';
 import logo from '../logo.png'
 
 class NavBar extends React.Component {
@@ -56,4 +58,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default connect(null, { toggleSignUp, toggleSignIn })(NavBar);
+export default connect(null, { toggleSignIn, toggleSignUp })(NavBar);
