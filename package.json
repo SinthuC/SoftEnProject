@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "availity-reactstrap-validation": "^1.4.3",
+    "axios": "^0.18.0",
     "bootstrap": "^4.0.0",
+    "dotenv": "^5.0.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
