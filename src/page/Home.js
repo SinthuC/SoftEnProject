@@ -140,17 +140,17 @@ class Home extends React.Component {
         const { getNews } = this;
         return (
             <div>
-                <Container>
+                <Container style={styles.section}>
                     <Row style={styles.section}>
                         <Col>
                             <SlideShow />
                         </Col>
                     </Row>
                     <Row style={styles.section}>
-                        <Col lg={4} md={6} sm={12} xs={12}>
+                        <Col lg={12} md={12} sm={12} xs={12}>
                             <ListGroup>
                                 { news.slice(0, newsCount).map((item) => (
-                                    <News key={item.id} title={item.title} detail={item.detail}/>
+                                    <News key={item.id} title={item.title} />
                                 ))}
                             </ListGroup>
                             <Button 
