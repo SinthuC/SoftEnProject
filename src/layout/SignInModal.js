@@ -11,6 +11,15 @@ import {
   Input,
   FormText
 } from 'reactstrap';
+import {
+  AvForm,
+  AvField,
+  AvGroup,
+  AvInput,
+  AvFeedback,
+  AvRadioGroup,
+  AvRadio
+} from 'availity-reactstrap-validation';
 import { connect } from 'react-redux';
 import {
   toggleSignIn
@@ -19,27 +28,36 @@ import {
 const SignInModal = props => (
   <Modal isOpen={props.auth.toggleSignIn} toggle={props.toggleSignIn}>
     <ModalHeader toggle={props.toggleSignUp}>Sign In</ModalHeader>
-    <ModalBody>
-    <Form>
-        <FormGroup>
-          <Label for="email">Username</Label>
-          <Input type="email" name="email" id="username" placeholder="Your Email" />
-        </FormGroup>
-        <FormGroup>
+    <AvForm>
+      <ModalBody>
+
+
+        <AvGroup>
+          <Label for="username">Username</Label>
+          <AvInput name="username" id="username" required />
+          <AvFeedback>This is an error!</AvFeedback>
+        </AvGroup>
+
+        <AvGroup>
           <Label for="password">Password</Label>
-          <Input type="password" name="password" id="password" placeholder="Your Password" />
-        </FormGroup>
-        </Form>
-          </ModalBody>
+          <AvInput name="password" id="password" type="password" required />
+          <AvFeedback>This is an error!</AvFeedback>
+        </AvGroup>
+
+
+      </ModalBody>
       <ModalFooter>
+        
         <Button color="success" onClick={props.toggleSignIn}>Sign in</Button>{' '}
         <Button color="secondary" onClick={props.toggleSignIn}>Cancel</Button>
+
       </ModalFooter>
+    </AvForm>
   </Modal>
-    );
-    
+);
+
 const mapStateToProps = state => ({
-      auth: state.auth,
-  });
-  
-export default connect(mapStateToProps, {toggleSignIn})(SignInModal);
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { toggleSignIn })(SignInModal);

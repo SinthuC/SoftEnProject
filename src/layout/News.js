@@ -4,6 +4,7 @@ import {
     ListGroupItem,
     ListGroupItemText,
 } from 'reactstrap';
+
 import { PropTypes } from 'prop-types';
 import './News.css';
 
