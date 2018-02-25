@@ -80,7 +80,7 @@ class SlideShow extends React.Component {
           onExited={this.onExited}
           key={item.src}
         >
-          <img src={item.src} alt={item.altText} width="100%" height="400"/>
+          <img src={item.src} alt={item.altText} width="100%" height="500"/>
           <CarouselCaption  captionHeader={item.caption} />
         </CarouselItem>
       );
