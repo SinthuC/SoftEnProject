@@ -10,7 +10,7 @@ import './News.css';
 
 
 const News = props => (
-        <ListGroupItem className="list-item" style={{backgroundColor: 'rgba(144, 149, 93, 0.3)',color:'#283227'}}>
+        <ListGroupItem className="list-item" style={{backgroundColor: 'white'}}>
             <ListGroupItemHeading>{props.title}</ListGroupItemHeading>
         </ListGroupItem>
 );
