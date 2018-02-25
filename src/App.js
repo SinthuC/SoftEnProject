@@ -3,8 +3,19 @@ import NavBar from './layout/NavBar';
 import SignUpModal from './layout/SignUpModal';
 import SignInModal from './layout/SignInModal';
 import Footer from './layout/Footer';
+import background from './camouflage.jpg';
+
+const styles = {
+  content: {
+    backgroundImage: `url(${background})`,
+    backgroundSize: 'cover',            
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center center',
+  }
+}
+
 const App = ({children}) => (
-  <div style={{background: 'linear-gradient(#d5d18a, #f9f6c2)'}}>
+  <div style={styles.content}>
     <NavBar />
     {children}
     <SignUpModal />
