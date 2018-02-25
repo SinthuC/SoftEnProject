@@ -16,7 +16,8 @@ const styles = {
     },
     moreButton: {
         marginTop: 16,
-    }
+        float: 'right',
+    },
 };
 
 const news = [
@@ -149,12 +150,12 @@ class Home extends React.Component {
                     <Row style={styles.section}>
                         <Col lg={12} md={12} sm={12} xs={12}>
                             <ListGroup>
-                                { news.slice(0, newsCount).map((item) => (
+                                {news.slice(0, newsCount).map((item) => (
                                     <News key={item.id} title={item.title} />
                                 ))}
                             </ListGroup>
-                            <Button 
-                                color="primary" 
+                            <Button
+                                color="success"
                                 style={styles.moreButton}
                                 onClick={() => getNews(newsCount)}>More</Button>
                         </Col>
