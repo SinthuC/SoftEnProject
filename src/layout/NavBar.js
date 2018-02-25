@@ -14,6 +14,7 @@ import {
   toggleSignUp,
   toggleSignIn,
 } from '../redux/action/auth';
+import logo from '../logo.png'
 
 class NavBar extends React.Component {
   constructor() {
@@ -34,9 +35,9 @@ class NavBar extends React.Component {
     const { toggle } = this;
     return (
       <div>
-        <Navbar dark expand="md" style={{ backgroundColor: 'green', marginBottom: 16 }}>
-          <Container>
-            <NavbarBrand href="/" className="mr-auto">Test</NavbarBrand>
+        <Navbar dark expand="md" style={{ backgroundColor: '#283227' }}>
+          <Container fluid>
+            <NavbarBrand href="/" className="mr-auto"><img src={logo} width={50} className="mr-3"/>ชุมชนหนอนหนังสือ</NavbarBrand>
             <NavbarToggler onClick={() => toggle(isOpen)} className="mr-2" />
             <Collapse isOpen={isOpen} navbar>
               <Nav className="ml-auto" navbar>
