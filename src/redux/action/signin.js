@@ -1,4 +1,5 @@
 import axios from 'axios';
+import bcrypt from 'bcryptjs';
 
 const onSignIn = (username, password) => ({
   type: 'SIGN_IN',
@@ -6,7 +7,7 @@ const onSignIn = (username, password) => ({
     `http://10.199.66.227/SoftEn2018/Sec01_NMB/api/user/signin.php`,
     {
       username: username,
-      password: password,
+      password: bcrypt.hash(password, 10),
     }
   )
 });
