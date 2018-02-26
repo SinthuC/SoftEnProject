@@ -11,13 +11,19 @@ const styles = {
     backgroundSize: 'cover',            
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center center',
+  },
+  children: {
+    minHeight: '100vh',
+    maxHeight: '100%',
   }
 }
 
 const App = ({children}) => (
   <div style={styles.content}>
     <NavBar />
-    {children}
+    <div style={styles.children}>
+      {children}
+    </div>
     <SignUpModal />
     <SignInModal />
     <Footer />
