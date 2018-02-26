@@ -13,10 +13,10 @@ export default (state = initState, action) => {
     case 'TOGGLE_SIGN_IN':
       state = { ...state, toggleSignIn: action.payload };
       return state;
-    case 'SET_USERNAME':
+    case 'SET_SIGN_IN_USERNAME':
       state = { ...state, username: action.payload };
       return state;
-    case 'SET_PASSWORD':
+    case 'SET_SIGN_IN_PASSWORD':
       state = { ...state, password: action.payload };
       return state;
     case 'SIGN_IN_PENDING':
