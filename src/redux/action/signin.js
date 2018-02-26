@@ -17,12 +17,12 @@ const toggleSignIn = (isOpen) => ({
 });
 
 const setUsername = (username) => ({
-  type: 'SET_USERNAME',
+  type: 'SET_SIGN_IN_USERNAME',
   payload: username,
 });
 
 const setPassword = (password) => ({
-  type: 'SET_PASSWORD',
+  type: 'SET_SIGN_IN_PASSWORD',
   payload: password,
 });
 
