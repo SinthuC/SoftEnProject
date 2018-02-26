@@ -13,7 +13,7 @@ const Router = props => (
     <App>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/admin" component={props.auth.user.admin ? Admin : Page403} />
+        <Route exact path="/admin" component={props.auth.user !== null && props.auth.user.admin ? Admin : Page403} />
         <Route exact path="*" component={Page404} />
       </Switch>
     </App>
