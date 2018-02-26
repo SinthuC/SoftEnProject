@@ -18,10 +18,9 @@ import {
 
 const SignUpModal = props => (
   <Modal isOpen={props.signup.toggleSignUp} toggle={props.toggleSignUp}>
-    <ModalHeader toggle={props.toggleSignUp}>Sign Up</ModalHeader>
+    <ModalHeader>Sign Up</ModalHeader>
     <Form>
-    <ModalBody>
-    
+      <ModalBody>
         <FormGroup>
           <Label for="username">Username*</Label>
           <Input type="text" name="username" id="username" placeholder="Your Username" required />
@@ -44,15 +43,13 @@ const SignUpModal = props => (
         </FormGroup> */}
         <FormGroup>
           <Label for="id">ID Number*</Label>
-          <Input type="text" name="id" id="id" placeholder="Your ID Number"  required/>
+          <Input type="text" name="id" id="id" placeholder="Your ID Number" required />
         </FormGroup>
-
-     
-    </ModalBody>
-    <ModalFooter>
-      <Button color="success" type="submit" >Sign Up</Button>{' '}
-      <Button color="secondary" onClick={props.toggleSignUp}>Cancel</Button>
-    </ModalFooter>
+      </ModalBody>
+      <ModalFooter>
+        <Button color="success" type="submit" >Sign Up</Button>{' '}
+        <Button color="secondary" onClick={props.toggleSignUp}>Cancel</Button>
+      </ModalFooter>
     </Form>
   </Modal>
 );
