@@ -26,10 +26,10 @@ import {
 
 const SignInModal = props => (
   <Modal isOpen={props.signin.toggleSignIn} toggle={props.toggleSignIn}>
-    <ModalHeader toggle={props.toggleSignIn}>Sign In</ModalHeader>
-    <Form onSubmit={e => {
+    <ModalHeader>Sign In</ModalHeader>
+    <Form onSubmit={async e => {
       e.preventDefault();
-      props.onSignIn(props.signin.username, props.signin.password);
+      await props.onSignIn(props.signin.username, props.signin.password);
       if(!props.signin.error && props.signin.success) {
         props.setAuth(props.signin.message);
       }
@@ -83,4 +83,4 @@ const mapStateToProps = state => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { toggleSignIn, setUsername, setPassword, onSignIn })(SignInModal);
+export default connect(mapStateToProps, { toggleSignIn, setUsername, setPassword, onSignIn, setAuth })(SignInModal);
