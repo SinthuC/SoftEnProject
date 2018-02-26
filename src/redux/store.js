@@ -11,8 +11,10 @@ import promise from 'redux-promise-middleware';
 import SignInReducer from './reducer/signin';
 import SignUpReducer from './reducer/signup';
 import NewsReducer from './reducer/news';
+import AuthReducer from './reducer/auth';
 
 const reducers = combineReducers({
+  auth: AuthReducer,
   signin: SignInReducer,
   signup: SignUpReducer,
   news: NewsReducer,
