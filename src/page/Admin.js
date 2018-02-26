@@ -6,8 +6,11 @@ import {
   ListGroup,
   ListGroupItem,
 } from 'reactstrap';
+import { connect } from 'react-redux';
+
 
 class Admin extends React.Component {
+
   render() {
     return (
       <Container fluid style={{marginTop: 16, marginBottom: 16}}>
@@ -29,4 +32,8 @@ class Admin extends React.Component {
   }
 }
 
-export default Admin;
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, null)(Admin);
