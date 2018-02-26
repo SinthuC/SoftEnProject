@@ -20,6 +20,9 @@ import {
   setPassword,
   onSignIn,
 } from '../redux/action/signin';
+import {
+  setAuth
+} from '../redux/action/auth';
 
 const SignInModal = props => (
   <Modal isOpen={props.signin.toggleSignIn} toggle={props.toggleSignIn}>
@@ -27,6 +30,9 @@ const SignInModal = props => (
     <Form onSubmit={e => {
       e.preventDefault();
       props.onSignIn(props.signin.username, props.signin.password);
+      if(!props.signin.error && props.signin.success) {
+        props.setAuth(props.signin.message);
+      }
     }}>
       <ModalBody>
         <FormGroup>
@@ -74,6 +80,7 @@ const SignInModal = props => (
 
 const mapStateToProps = state => ({
   signin: state.signin,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { toggleSignIn, setUsername, setPassword, onSignIn })(SignInModal);
