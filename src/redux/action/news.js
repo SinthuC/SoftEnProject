@@ -1,12 +1,10 @@
 import axios from 'axios';
-require('dotenv').config();
 
-const getAllNews = () => ({
-  type: 'GET_ALL_NEWS',
-  payload: axios.get(`${process.env.API_URL}/news/read.php`),
+const getNewsByLimit = (start, end) => ({
+  type: 'GET_LIMIT_NEWS',
+  payload: axios.get(`http://10.199.66.227/SoftEn2018/Sec01_NMB/api/news/read_limit.php?start=${start}&end=${end}`),
 });
 
-
 export {
-  getAllNews
+  getNewsByLimit
 };

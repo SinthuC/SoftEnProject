@@ -26,7 +26,8 @@ export default (state = initState, action) => {
       state = { ...state, loading: false, error: true, message: "network error.", success: true };
       return state;
     case 'SIGN_IN_FULFILLED':
-      state = { ...state, loading: false, error: false, success: action.payload.data.success, message: action.payload.data.message, };
+      localStorage.setItem("token", action.payload.data.message);
+      state = { ...state, toggleSignIn: true, loading: false, error: false, success: action.payload.data.success, message: action.payload.data.message, };
       return state;
     default:
       return state;

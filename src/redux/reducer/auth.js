@@ -1,17 +1,29 @@
 const initState = {
-  // user: null,
-  user: {
-    username: "admin",
-    admin: false,
-    point: 0,
-  },
+  loading: false,
+  token: localStorage.getItem("token"),
 };
 
 export default (state = initState, action) => {
   switch (action.type) {
-    case 'SET_AUTH': 
-      state = { ...state, user: action.payload}
-      return state
+    case 'SET_TOKEN':
+      localStorage.setItem("token", action.payload);
+      state = { ...state, token: action.payload };
+      return state;
+    case 'CHECK_AUTH_PENDING':
+      state = { ...state, loading: true };
+      return state;
+    case 'CHECK_AUTH_REJECTED':
+      state = { ...state, loading: false };
+      return state;
+    case 'CHECK_AUTH_FULFILLED':
+      if(!action.payload.data.success)
+        localStorage.clear();
+      state = { ...state, loading: false, token: action.payload.data };
+      return state;
+    case 'SIGN_OUT':
+      localStorage.clear();
+      state = { ...state, token: action.payload };
+      return state;
     default:
       return state;
   }

@@ -1,23 +1,21 @@
 import React from 'react';
-import { 
-    ListGroupItemHeading, 
+import {
+    ListGroupItemHeading,
     ListGroupItem,
     ListGroupItemText,
+    Button,
 } from 'reactstrap';
 
-import { PropTypes } from 'prop-types';
+
 import './News.css';
 
 
 const News = props => (
-        <ListGroupItem className="list-item" style={{backgroundColor: 'white'}}>
-            <ListGroupItemHeading>{props.title}</ListGroupItemHeading>
-        </ListGroupItem>
+    <ListGroupItem className="list-item" style={{ backgroundColor: 'white', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
+        <Button color="link">
+            {props.topic}
+        </Button>
+    </ListGroupItem>
 );
-
-News.propTypes = {
-    title: PropTypes.string,    
-   
-} 
 
 export default News;
