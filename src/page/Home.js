@@ -93,7 +93,11 @@ const Home = props => {
               {
                 news.news != null ? news.news.map((item) => (
                   <News key={item.id} topic={item.news_topic} />
-                )) : <ListGroupItem>News not found.</ListGroupItem>
+                )) : <ListGroupItem>
+                  {
+                    news.loading ? "loading" : "Empty."
+                  }
+                </ListGroupItem>
               }
             </ListGroup>
             {

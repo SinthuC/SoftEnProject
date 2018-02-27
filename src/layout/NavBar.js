@@ -36,7 +36,7 @@ const enchance = compose(
       toggleSignIn,
       toggleSignUp,
       signOut,
-    }
+    },
   ),
   withState('isOpen', 'toggle', false)
 );
@@ -69,6 +69,7 @@ const NavBar = props => {
                         color="success"
                         onClick={async () => {
                           await signOut();
+                          localStorage.clear();
                           window.location.href = "/";
                         }}>Sign Out</Button>
                     </NavItem>

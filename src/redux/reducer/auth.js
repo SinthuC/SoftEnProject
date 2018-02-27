@@ -21,7 +21,6 @@ export default (state = initState, action) => {
       state = { ...state, loading: false, token: action.payload.data };
       return state;
     case 'SIGN_OUT':
-      localStorage.clear();
       state = { ...state, token: action.payload };
       return state;
     default:
