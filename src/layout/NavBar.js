@@ -54,16 +54,17 @@ const NavBar = props => {
               !localStorage.hasOwnProperty("token") ? (
                 <Nav className="ml-auto" navbar>
                   <NavItem className="m-2">
-                    <Button outline color="success" onClick={() => toggleSignIn()}>Sign In</Button>
+                    <Button id="signin" outline color="success" onClick={() => toggleSignIn()}>Sign In</Button>
                   </NavItem>
                   <NavItem className="m-2">
-                    <Button outline color="success" onClick={() => toggleSignUp()}>Sign Up</Button>
+                    <Button id="signup" outline color="success" onClick={() => toggleSignUp()}>Sign Up</Button>
                   </NavItem>
                 </Nav>
               ) : (
                   <Nav className="ml-auto" navbar>
                     <NavItem className="m-2">
                       <Button
+                        id="signout"
                         outline
                         color="success"
                         onClick={async () => {

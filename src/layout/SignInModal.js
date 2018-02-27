@@ -10,6 +10,7 @@ import {
   ModalFooter,
   Form,
   FormGroup,
+  FormFeedback,
   Label,
   Input,
   Alert
@@ -53,7 +54,7 @@ const SignInModal = props => {
           <FormGroup>
             {
               props.signin.error || !props.signin.success ? (
-                <Alert color="danger">
+                <Alert color="danger" id="alert">
                   {props.signin.message}
                 </Alert>
               ) : false
