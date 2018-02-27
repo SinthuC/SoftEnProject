@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as AppRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter as AppRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import App from './App';
@@ -13,8 +13,8 @@ const Router = props => (
     <App>
       <Switch>
         <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
-        <Route path={`${process.env.PUBLIC_URL}/403`} component={Page403} />
-        <Route path={`${process.env.PUBLIC_URL}/*`} component={Page404} />
+        <Route exact path={`${process.env.PUBLIC_URL}/403`} component={Page403} />
+        <Route exact path={`${process.env.PUBLIC_URL}/*`} component={Page404} />
       </Switch>
     </App>
   </AppRouter>
