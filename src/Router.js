@@ -9,11 +9,11 @@ import Home from './page/Home';
 import Page404 from './page/404';
 
 const Router = props => (
-  <AppRouter>
+  <AppRouter basename="/SoftEn2018/Sec01_NMB">
     <App>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="*" component={Page404} />
+        <Route exact path={`/`} component={Home} />
+        <Route exact path={`/*`} component={Page404} />
       </Switch>
     </App>
   </AppRouter>

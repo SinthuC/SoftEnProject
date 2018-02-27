@@ -46,7 +46,7 @@ const NavBar = props => {
     <div>
       <Navbar dark expand="md" style={{ backgroundColor: '#283227' }}>
         <Container fluid>
-          <NavbarBrand href="/" className="mr-auto"><img src={logo} width={50} className="mr-3" alt="logo" />ชุมชนหนอนหนังสือ</NavbarBrand>
+          <NavbarBrand href={`${process.env.PUBLIC_URL}/`} className="mr-auto"><img src={logo} width={50} className="mr-3" alt="logo" />ชุมชนหนอนหนังสือ</NavbarBrand>
           <NavbarToggler onClick={() => toggle(!isOpen)} className="mr-2" />
           <Collapse isOpen={isOpen} navbar>
 
@@ -69,7 +69,7 @@ const NavBar = props => {
                         onClick={async () => {
                           await signOut();
                           localStorage.clear();
-                          window.location.href = "/";
+                          window.location.href = `${process.env.PUBLIC_URL}/`;
                         }}>Sign Out</Button>
                     </NavItem>
                   </Nav>

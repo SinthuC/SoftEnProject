@@ -2,6 +2,7 @@
   "name": "soften",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://10.199.66.227/SoftEn2018/Sec01_NMB",
   "dependencies": {
     "availity-reactstrap-validation": "^1.4.3",
     "axios": "^0.18.0",

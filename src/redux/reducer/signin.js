@@ -28,7 +28,7 @@ export default (state = initState, action) => {
     case 'SIGN_IN_FULFILLED':
       if(action.payload.data.success) {
         localStorage.setItem("token", action.payload.data.message);
-        window.location.href = "/";
+        window.location.href = `${process.env.PUBLIC_URL}/`;
       }
       state = { ...state, toggleSignIn: true, loading: false, error: false, success: action.payload.data.success, message: action.payload.data.message, };
       return state;
