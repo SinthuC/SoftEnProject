@@ -11,10 +11,12 @@ import './News.css';
 
 
 const News = props => (
-    <ListGroupItem className="list-item" style={{ backgroundColor: 'white', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
-        <Button color="link">
-            {props.topic}
-        </Button>
+    <ListGroupItem className="list-item" style={{ backgroundColor: 'white', display: 'fixed', justifyContent: 'flex-start', alignItems: 'center' }}>
+        <div>
+            <a href="#">
+                <h4 style={{ wordWrap: 'break-word' }}>{props.topic}</h4>
+            </a>
+        </div>
     </ListGroupItem>
 );
 

@@ -49,9 +49,6 @@ const SignInModal = props => {
       <Form onSubmit={async e => {
         e.preventDefault();
         await props.onSignIn(props.signin.username, props.signin.password);
-        if(props.signin.success)
-          await props.setToken(localStorage.getItem("token"));
-        window.location.href = "/";
       }}>
         <ModalBody>
           <FormGroup>

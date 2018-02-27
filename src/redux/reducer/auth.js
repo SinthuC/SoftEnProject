@@ -1,6 +1,7 @@
 const initState = {
   loading: false,
   token: localStorage.getItem("token"),
+  admin: false,
 };
 
 export default (state = initState, action) => {
@@ -16,9 +17,13 @@ export default (state = initState, action) => {
       state = { ...state, loading: false };
       return state;
     case 'CHECK_AUTH_FULFILLED':
-      if(!action.payload.data.success)
+      if (!action.payload.data.success) {
         localStorage.clear();
-      state = { ...state, loading: false, token: action.payload.data };
+        state = { ...state, loading: false, token: action.payload.data };
+      }
+      else {
+        state = { ...state, loading: false, admin: action.payload.data.message ,token: action.payload.data };
+      }
       return state;
     case 'SIGN_OUT':
       state = { ...state, token: action.payload };
