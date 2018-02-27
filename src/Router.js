@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 import App from './App';
 import Home from './page/Home';
-import Admin from './page/Admin';
-import Page403 from './page/403';
+// import Admin from './page/Admin';
+// import Page403 from './page/403';
 import Page404 from './page/404';
 
 const Router = props => (

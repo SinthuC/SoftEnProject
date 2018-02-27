@@ -1,10 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import {
   compose,
   lifecycle,
-  renderComponent,
 } from 'recompose';
 import Loading from 'react-loading-bar'
 import 'react-loading-bar/dist/index.css'

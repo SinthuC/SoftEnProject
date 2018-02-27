@@ -12,7 +12,6 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
   Alert
 } from 'reactstrap';
 

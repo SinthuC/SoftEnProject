@@ -10,7 +10,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   Container,
   Button
 } from 'reactstrap';
@@ -42,13 +41,12 @@ const enchance = compose(
 );
 
 const NavBar = props => {
-  const { isOpen, toggleSignIn, toggleSignUp, toggle, auth } = props;
-  console.log("isOpen", isOpen);
+  const { isOpen, toggleSignIn, toggleSignUp, toggle } = props;
   return (
     <div>
       <Navbar dark expand="md" style={{ backgroundColor: '#283227' }}>
         <Container fluid>
-          <NavbarBrand href="/" className="mr-auto"><img src={logo} width={50} className="mr-3" />ชุมชนหนอนหนังสือ</NavbarBrand>
+          <NavbarBrand href="/" className="mr-auto"><img src={logo} width={50} className="mr-3" alt="logo" />ชุมชนหนอนหนังสือ</NavbarBrand>
           <NavbarToggler onClick={() => toggle(!isOpen)} className="mr-2" />
           <Collapse isOpen={isOpen} navbar>
 

@@ -3,8 +3,6 @@ import {
   compose,
   lifecycle,
   withState,
-  branch,
-  renderComponent,
 } from 'recompose';
 import { connect } from 'react-redux';
 
@@ -27,27 +25,22 @@ const items = [
   {
     news_cover: 'example.jpg',
     news_topic: 'Slide 1',
-    news_topic: 'Slide 1'
   },
   {
     news_cover: 'example.jpg',
     news_topic: 'Slide 2',
-    news_topic: 'Slide 2'
   },
   {
     news_cover: 'example.jpg',
     news_topic: 'Slide 3',
-    news_topic: 'Slide 3'
   },
   {
     news_cover: 'example.jpg',
     news_topic: 'Slide 4',
-    news_topic: 'Slide 4'
   },
   {
     news_cover: 'example.jpg',
     news_topic: 'Slide 5',
-    news_topic: 'Slide 5'
   },
 ];
 

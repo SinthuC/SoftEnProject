@@ -1,9 +1,6 @@
 import React from 'react';
 import {
-    ListGroupItemHeading,
     ListGroupItem,
-    ListGroupItemText,
-    Button,
 } from 'reactstrap';
 
 
