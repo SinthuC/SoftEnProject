@@ -77,106 +77,44 @@ const Home = props => {
   const { news, newsCount, setNewsCount, getNewsByLimit } = props;
   return (
     <div>
-
-      {
-        props.auth.admin ? (
-          <Container style={styles.section} fluid>
-            <Row style={styles.section}>
-              <Col lg={2} md={4} sm={12} xs={12}>
-                <ListGroup>
-                  <ListGroupItem>
-                    <Button color="link">Add</Button>
-                  </ListGroupItem>
-                  <ListGroupItem>
-                    <Button color="link">Edit</Button>
-                  </ListGroupItem>
-                  <ListGroupItem>
-                    <Button color="link">Delete</Button>
-                  </ListGroupItem>
-                </ListGroup>
-              </Col>
-              <Col lg={8} md={6} sm={12} xs={12}>
-                <Row style={styles.section}>
-                  <Col>
-                    <SlideShow items={news.news == null ? items : news.news} />
-                  </Col>
-                </Row>
-                <Row style={styles.section}>
-                  <Col lg={12} md={12} sm={12} xs={12}>
-                    <ListGroup>
-                      {
-                        news.news != null ? news.news.map((item) => (
-                          <News key={item.id} topic={item.news_topic} />
-                        )) : <ListGroupItem>
-                            {
-                              news.loading ? "loading" : "Empty."
-                            }
-                          </ListGroupItem>
-                      }
-                    </ListGroup>
+      <Container style={styles.section}>
+        <Row style={styles.section}>
+          <Col>
+            <SlideShow items={news.news == null ? items : news.news} />
+          </Col>
+        </Row>
+        <Row style={styles.section}>
+          <Col lg={12} md={12} sm={12} xs={12}>
+            <ListGroup>
+              {
+                news.news != null ? news.news.map((item) => (
+                  <News key={item.id} topic={item.news_topic} />
+                )) : <ListGroupItem>
                     {
-                      news.news != null && news.news.length >= newsCount ? (
-                        <Button
-                          color="success"
-                          style={styles.moreButton}
-                          onClick={async () => {
-                            await getNewsByLimit(0, newsCount + 10);
-                            await setNewsCount((newsCount + 10));
-                          }}
-                        >
-                          {
-                            news.loading ? "loading" : "More"
-                          }
-                        </Button>
-                      ) : false
+                      news.loading ? "loading" : "Empty."
                     }
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-          </Container>
-        ) : (
-            <Container style={styles.section}>
-              <Row style={styles.section}>
-                <Col>
-                  <SlideShow items={news.news == null ? items : news.news} />
-                </Col>
-              </Row>
-              <Row style={styles.section}>
-                <Col lg={12} md={12} sm={12} xs={12}>
-                  <ListGroup>
-                    {
-                      news.news != null ? news.news.map((item) => (
-                        <News key={item.id} topic={item.news_topic} />
-                      )) : <ListGroupItem>
-                          {
-                            news.loading ? "loading" : "Empty."
-                          }
-                        </ListGroupItem>
-                    }
-                  </ListGroup>
+                  </ListGroupItem>
+              }
+            </ListGroup>
+            {
+              news.news != null && news.news.length >= newsCount ? (
+                <Button
+                  color="success"
+                  style={styles.moreButton}
+                  onClick={async () => {
+                    await getNewsByLimit(0, newsCount + 10);
+                    await setNewsCount((newsCount + 10));
+                  }}
+                >
                   {
-                    news.news != null && news.news.length >= newsCount ? (
-                      <Button
-                        color="success"
-                        style={styles.moreButton}
-                        onClick={async () => {
-                          await getNewsByLimit(0, newsCount + 10);
-                          await setNewsCount((newsCount + 10));
-                        }}
-                      >
-                        {
-                          news.loading ? "loading" : "More"
-                        }
-                      </Button>
-                    ) : false
+                    news.loading ? "loading" : "More"
                   }
-                </Col>
-              </Row>
-            </Container>
-          )
-      }
-
+                </Button>
+              ) : false
+            }
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

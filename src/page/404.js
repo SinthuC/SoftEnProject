@@ -1,6 +1,7 @@
 import React from 'react';
 import { 
   Container,
+  Button,
 } from 'reactstrap';
 
 const styles = {
@@ -20,6 +21,9 @@ const Page404 = () => (
     <h2>404</h2>
     <h4>Not Found</h4>
     <h5>Woops. Looks like this page doesn't exist.</h5>
+    <Button outline color="secondary" onClick={() => window.location.href = `${process.env.PUBLIC_URL}`}>
+      Go to home page.
+    </Button>
   </Container>
 );
 

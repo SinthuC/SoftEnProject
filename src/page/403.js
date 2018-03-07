@@ -1,6 +1,7 @@
 import React from 'react';
 import { 
   Container,
+  Button,
 } from 'reactstrap';
 
 const styles = {
@@ -20,6 +21,9 @@ const Page403 = () => (
     <h2>403</h2>
     <h4>Forbiden</h4>
     <h5>Access to this resource  on the server is denied!</h5>
+    <Button outline color="secondary" onClick={() => window.location.href = `${process.env.PUBLIC_URL}`}>
+      Go to home page.
+    </Button>
   </Container>
 );
 

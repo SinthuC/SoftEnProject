@@ -1,10 +1,10 @@
 import React from 'react';
 import { HashRouter as AppRouter, Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
+
 
 import App from './App';
 import Home from './page/Home';
-// import Admin from './page/Admin';
+import Admin from './page/Admin';
 import Page403 from './page/403';
 import Page404 from './page/404';
 
@@ -13,6 +13,7 @@ const Router = props => (
     <App>
       <Switch>
         <Route exact path={`/`} component={Home} />
+        <Route exact path={`/admin`} component={Admin} />
         <Route exact path={`/403`} component={Page403} />
         <Route exact path={`*`} component={Page404} />
       </Switch>
@@ -20,8 +21,4 @@ const Router = props => (
   </AppRouter>
 );
 
-const mapStateToProps = state => ({
-  auth: state.auth,
-});
-
-export default connect(mapStateToProps, null)(Router);
+export default Router;
