@@ -7,17 +7,20 @@ import Home from './page/Home';
 import Admin from './page/Admin';
 import Page403 from './page/403';
 import Page404 from './page/404';
-
+import Register from './page/Register';
 const Router = props => (
   <AppRouter>
-    <App>
-      <Switch>
+
+    <Switch>
+      <App>
         <Route exact path={`/`} component={Home} />
         <Route exact path={`/admin`} component={Admin} />
+        <Route exact path={`/register`} component={Register} />
         <Route exact path={`/403`} component={Page403} />
-        <Route exact path={`*`} component={Page404} />
-      </Switch>
-    </App>
+       
+      </App>
+    </Switch>
+
   </AppRouter>
 );
 
