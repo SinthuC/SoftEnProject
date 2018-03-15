@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   compose,
   withState,
@@ -11,7 +12,14 @@ import {
   Nav,
   NavItem,
   Container,
-  Button
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownToggle,
+  DropdownMenu,
+  NavLink,
+  Row,
+  Col
 } from 'reactstrap';
 import { connect } from 'react-redux';
 
@@ -52,14 +60,16 @@ const NavBar = props => {
 
             {
               !localStorage.hasOwnProperty("token") ? (
-                <Nav className="ml-auto" navbar>
-                  <NavItem className="m-2">
-                    <Button id="signin" outline color="success" onClick={() => toggleSignIn()}>Sign In</Button>
+
+                <Nav className="ml-auto" vertical>
+                  <NavItem>
+                    <NavLink href="#" onClick={() => toggleSignIn()} >Sign in</NavLink>
                   </NavItem>
-                  <NavItem className="m-2">
-                    <Button id="signup" outline color="success" onClick={() => toggleSignUp()}>Sign Up</Button>
+                  <NavItem>
+                    <NavLink href="#/register">Register</NavLink>
                   </NavItem>
                 </Nav>
+
               ) : (
                   <Nav className="ml-auto" navbar>
                     <NavItem className="m-2">
@@ -76,9 +86,27 @@ const NavBar = props => {
                   </Nav>
                 )
             }
+
+
           </Collapse>
         </Container>
       </Navbar>
+
+      <Nav style={{ backgroundColor: '#000000', paddingLeft: 30 }} >
+        <NavItem>
+          <NavLink href="#">Home</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink href="#">Knowledge Resources</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink href="#">Events</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink href="#">About Us</NavLink>
+        </NavItem>
+      </Nav>
+
     </div>
   );
 }
