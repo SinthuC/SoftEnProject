@@ -4,8 +4,9 @@ import {
   compose,
   lifecycle,
 } from 'recompose';
-import Loading from 'react-loading-bar'
-import 'react-loading-bar/dist/index.css'
+
+import Loading from 'react-loading-bar';
+import 'react-loading-bar/dist/index.css';
 
 import {
   checkAuth
@@ -16,11 +17,10 @@ import SignUpModal from './layout/SignUpModal';
 import SignInModal from './layout/SignInModal';
 import Footer from './layout/Footer';
 
-import background from './camouflage.jpg';
 
 const styles = {
   content: {
-    backgroundImage: `url(${background})`,
+    backgroundImage: `linear-gradient(0deg, rgba(000,000,000,1),rgba(000,000,000,1))`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center center',
