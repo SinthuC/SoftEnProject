@@ -16,6 +16,7 @@ import {
 } from 'reactstrap';
 import SlideShow from '../layout/SlideShow';
 import News from '../layout/News';
+import example from '../example.jpg';
 
 import {
   getNewsByLimit,
@@ -23,23 +24,23 @@ import {
 
 const items = [
   {
-    news_cover: 'example.jpg',
+    news_cover: example,
     news_topic: 'Slide 1',
   },
   {
-    news_cover: 'example.jpg',
+    news_cover: example,
     news_topic: 'Slide 2',
   },
   {
-    news_cover: 'example.jpg',
+    news_cover: example,
     news_topic: 'Slide 3',
   },
   {
-    news_cover: 'example.jpg',
+    news_cover: example,
     news_topic: 'Slide 4',
   },
   {
-    news_cover: 'example.jpg',
+    news_cover: example,
     news_topic: 'Slide 5',
   },
 ];
@@ -80,7 +81,7 @@ const Home = props => {
       <Container style={styles.section}>
         <Row style={styles.section}>
           <Col>
-            <SlideShow items={news.news == null ? items : news.news} />
+            <SlideShow items={news.news == null ? items : news.news.length >= 5 ? news.news.slice(0, 5) : news.news} />
           </Col>
         </Row>
         <Row style={styles.section}>
