@@ -1,0 +1,37 @@
+.navbar {
+  background-color: #577c6a;
+}
+
+.navbar-link {
+  color: #f2efea;
+  cursor: pointer;
+}
+
+.navbar-link:hover {
+  color: #bcb9b4;
+  cursor: pointer;
+}
+
+.navbar-second {
+  background-color: rgba(89,126,108,.5);
+}
+
+.navbar-btn {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-style: hidden;
+  border-width: 0px 0px 2px 0px;
+  border-color: #577c6a;
+}
+
+.navbar-btn-selected {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 2px;
+  border-style: solid;
+  border-width: 0px 0px 2px 0px;
+  border-color: #577c6a;
+}

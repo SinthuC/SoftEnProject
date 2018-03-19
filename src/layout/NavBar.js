@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   compose,
   withState,
 } from 'recompose';
+import { withRouter } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -32,6 +32,8 @@ import {
 import {
   signOut,
 } from '../redux/action/auth';
+
+import './NavBar.css';
 import logo from '../logo.png'
 
 const enchance = compose(
@@ -45,70 +47,98 @@ const enchance = compose(
       signOut,
     },
   ),
-  withState('isOpen', 'toggle', false)
+  withState("isOpen", "toggle", false)
 );
 
 const NavBar = props => {
-  const { isOpen, toggleSignIn, toggleSignUp, toggle } = props;
+  const { isOpen, toggle, toggleSignIn, toggleSignUp, location } = props;
   return (
     <div>
-      <Navbar dark expand="md" style={{ backgroundColor: '#283227' }}>
+      <Navbar
+        dark
+        expand="md"
+        className="navbar"
+      >
         <Container fluid>
-          <NavbarBrand href={`${process.env.PUBLIC_URL}/`} className="mr-auto"><img src={logo} width={50} className="mr-3" alt="logo" />ชุมชนหนอนหนังสือ</NavbarBrand>
-          <NavbarToggler onClick={() => toggle(!isOpen)} className="mr-2" />
-          <Collapse isOpen={isOpen} navbar>
-
-            {
-              !localStorage.hasOwnProperty("token") ? (
-
-                <Nav className="ml-auto" vertical>
-                  <NavItem>
-                    <NavLink href="#" onClick={() => toggleSignIn()} >Sign in</NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink href="#/register">Register</NavLink>
+          <NavbarBrand
+            href={`${process.env.PUBLIC_URL}/`}
+            className="mr-auto"
+          >
+            ชุมชนหนอนหนังสือ
+          <img
+              src={logo}
+              width={50}
+              className="ml-3"
+              alt="logo"
+            />
+          </NavbarBrand>
+          {
+            !localStorage.hasOwnProperty("token") ? (
+              <Nav className="ml-auto" vertical>
+                <NavItem>
+                  <NavLink
+                    href="#"
+                    className="navbar-link"
+                    onClick={() => toggleSignIn()}
+                  >
+                    Sign in
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink
+                    href={`${process.env.PUBLIC_URL}/#/register`}
+                    className="navbar-link"
+                  >
+                    Register
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            ) : (
+                <Nav className="ml-auto" navbar>
+                  <NavItem className="m-2">
+                    <Button
+                      id="signout"
+                      outline
+                      color="success"
+                      onClick={async () => {
+                        await signOut();
+                        localStorage.clear();
+                        window.location.href = `${process.env.PUBLIC_URL}/`;
+                      }}>Sign Out</Button>
                   </NavItem>
                 </Nav>
-
-              ) : (
-                  <Nav className="ml-auto" navbar>
-                    <NavItem className="m-2">
-                      <Button
-                        id="signout"
-                        outline
-                        color="success"
-                        onClick={async () => {
-                          await signOut();
-                          localStorage.clear();
-                          window.location.href = `${process.env.PUBLIC_URL}/`;
-                        }}>Sign Out</Button>
-                    </NavItem>
-                  </Nav>
-                )
-            }
-
-
-          </Collapse>
+              )
+          }
         </Container>
       </Navbar>
-
-      <Nav style={{ backgroundColor: '#000000', paddingLeft: 30 }} >
-        <NavItem>
-          <NavLink href="#">Home</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#">Knowledge Resources</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#">Events</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#">About Us</NavLink>
-        </NavItem>
+      <Nav className="navbar-second">
+        <Container>
+          <div style={{ display: "flex" }}>
+            <NavItem className={location.pathname == "/" ? "navbar-btn-selected" : "navbar-btn"}>
+              <Dropdown isOpen={isOpen} toggle={() => toggle(toggle => !toggle)}>
+                <DropdownToggle style={{ backgroundColor: "rgba(0,0,0,.0)", border: 0 }} caret>
+                  Home
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem>News</DropdownItem>
+                  <DropdownItem>Announcement</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </NavItem>
+            <NavItem>
+              <NavLink href="#" className="navbar-link">Knowledge Resources</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="#" className="navbar-link">Events</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="#" className="navbar-link">About Us</NavLink>
+            </NavItem>
+          </div>
+        </Container>
       </Nav>
-
     </div>
   );
 }
 
-export default enchance(NavBar);
+export default enchance(withRouter(NavBar));

@@ -4,7 +4,18 @@
         -ms-animation: fadein 1s; /* Internet Explorer */
          -o-animation: fadein 1s; /* Opera < 12.1 */
             animation: fadein 1s;
-           
+}
+
+.list-link {
+  color: #f2efea;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.list-link:hover {
+  color: #bcb9b4;
+  cursor: pointer;
+  z-index: 1;
 }
 
 @-webkit-keyframes fadein {
