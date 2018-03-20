@@ -1,0 +1,9 @@
+.register-link {
+  color: #577c6a;
+  cursor: pointer;
+}
+
+.register-link:hover {
+  color: #3e5c4d;
+  cursor: pointer;
+}
