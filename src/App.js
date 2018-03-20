@@ -13,8 +13,9 @@ import {
 } from './redux/action/auth';
 
 import NavBar from './layout/NavBar';
-import SignUpModal from './layout/SignUpModal';
+import PolicyModal from './layout/PolicyModal';
 import SignInModal from './layout/SignInModal';
+import SuccessModal from './layout/SuccessModal';
 import Footer from './layout/Footer';
 
 
@@ -62,8 +63,9 @@ const App = props => {
       <div style={styles.children}>
         {props.children}
       </div>
-      <SignUpModal />
+      <PolicyModal />
       <SignInModal />
+      <SuccessModal />
       <Footer />
     </div>
   );
