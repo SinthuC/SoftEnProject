@@ -1,19 +1,16 @@
 const initState = {
   loading: false,
-  username: '',
-  password: '',
-  cpassword: '',
-  personalId: '',
-  toggleSignUp: false,
-  error: false,
-  success: true,
-  message: null,
+  togglePolicy: false,
+  toggleSuccess: false,
 };
 
 export default (state = initState, action) => {
   switch (action.type) {
-    case 'TOGGLE_SIGN_UP':
-      state = { ...state, toggleSignUp: action.payload };
+    case 'TOGGLE_POLICY':
+      state = { ...state, togglePolicy: action.payload };
+      return state;
+    case 'TOGGLE_SUCCESS':
+      state = { ...state, toggleSuccess: action.payload };
       return state;
     default:
       return state;
