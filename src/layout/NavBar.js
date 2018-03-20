@@ -27,9 +27,6 @@ import {
   toggleSignIn,
 } from '../redux/action/signin';
 import {
-  toggleSignUp,
-} from '../redux/action/signup';
-import {
   signOut,
 } from '../redux/action/auth';
 
@@ -43,7 +40,6 @@ const enchance = compose(
     }),
     {
       toggleSignIn,
-      toggleSignUp,
       signOut,
     },
   ),
@@ -51,7 +47,7 @@ const enchance = compose(
 );
 
 const NavBar = props => {
-  const { isOpen, toggle, toggleSignIn, toggleSignUp, location } = props;
+  const { isOpen, toggle, toggleSignIn, location } = props;
   return (
     <div>
       <Navbar
@@ -88,6 +84,7 @@ const NavBar = props => {
                   <NavLink
                     href={`${process.env.PUBLIC_URL}/#/register`}
                     className="navbar-link"
+                    id="register"
                   >
                     Register
                   </NavLink>
@@ -115,13 +112,12 @@ const NavBar = props => {
         <Container>
           <div style={{ display: "flex" }}>
             <NavItem className={location.pathname == "/" ? "navbar-btn-selected" : "navbar-btn"}>
-              <Dropdown isOpen={isOpen} toggle={() => toggle(toggle => !toggle)}>
+              <Dropdown isOpen={isOpen} toggle={() => toggle(toggle => !toggle)} onClick={() => window.location.href=`${process.env.PUBLIC_URL}/`} onMouseEnter={() => toggle(toggle => !toggle)} >
                 <DropdownToggle style={{ backgroundColor: "rgba(0,0,0,.0)", border: 0 }} caret>
                   Home
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem>News</DropdownItem>
-                  <DropdownItem>Announcement</DropdownItem>
+                  <DropdownItem>News & Announcement</DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </NavItem>
