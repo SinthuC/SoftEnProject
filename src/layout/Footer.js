@@ -33,8 +33,7 @@ const Footer = () => (
       </Row>
       <Row>
         <Col lg={12} md={12} sm={12} xs={12} style={styles.content}>
-          <h5>Contact Us</h5>
-          <h6>contact@nmb.com</h6>
+          <h6>Contact us : contact@nmb.com</h6>
         </Col>
       </Row>
     </Container>
