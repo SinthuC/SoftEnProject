@@ -86,10 +86,11 @@ const Home = props => {
         </Row>
         <Row style={styles.section}>
           <Col lg={12} md={12} sm={12} xs={12}>
+          <h3 style={{color:'white'}}>News & Announcement</h3>
             <ListGroup>
               {
-                news.news != null ? news.news.map((item) => (
-                  <News key={item.id} topic={item.news_topic} />
+                news.news != null ? news.news.map((item,index) => (
+                  <News key={item.id} id={index} topic={item.news_topic} />
                 )) : <ListGroupItem>
                     {
                       news.loading ? "loading" : "Empty."
@@ -100,6 +101,7 @@ const Home = props => {
             {
               news.news != null && news.news.length >= newsCount ? (
                 <Button
+                  id="more"
                   color="success"
                   style={styles.moreButton}
                   onClick={async () => {
