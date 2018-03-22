@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  compose
+  compose,
 } from 'recompose';
 import {
   Button,
@@ -15,13 +15,14 @@ import {
   Input,
   Alert
 } from 'reactstrap';
-
+import Recaptcha from 'react-recaptcha';
 import { connect } from 'react-redux';
 import {
   toggleSignIn,
   setUsername,
   setPassword,
   onSignIn,
+  setRecaptcha,
 } from '../redux/action/signin';
 import {
   setToken
@@ -38,8 +39,9 @@ const enchance = compose(
       setPassword,
       onSignIn,
       setToken,
+      setRecaptcha,
     },
-  )
+  ),
 );
 
 const SignInModal = props => {
@@ -85,9 +87,21 @@ const SignInModal = props => {
               disabled={props.signin.loading}
               required />
           </FormGroup>
+          <FormGroup>
+            <Recaptcha 
+               sitekey="6Lc2Nk4UAAAAACAYJLpq3AjyvMkeNFJ9B-dxupUZ"
+               render="explicit"
+               verifyCallback={() => {
+                props.setRecaptcha(true);
+               }}
+               expiredCallback={() => {
+                props.setRecaptcha(false);
+               }}
+            />
+          </FormGroup>
         </ModalBody>
         <ModalFooter>
-          <Button color="success" type="submit" id="submit" disabled={props.signin.loading}>Sign in</Button>{' '}
+          <Button color="success" type="submit" id="submit" disabled={props.signin.loading || !props.signin.recaptcha}>Sign in</Button>{' '}
           <Button color="secondary" id="cancel" disabled={props.signin.loading} onClick={props.toggleSignIn}>Cancel</Button>
         </ModalFooter>
       </Form>
