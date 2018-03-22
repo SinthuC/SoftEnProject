@@ -27,9 +27,15 @@ const setPassword = (password) => ({
   payload: password,
 });
 
+const setRecaptcha = (recaptcha) => ({
+  type: 'SET_RECAPTCHA',
+  payload: recaptcha,
+});
+
 export {
   toggleSignIn,
   setUsername,
   setPassword,
   onSignIn,
+  setRecaptcha,
 };

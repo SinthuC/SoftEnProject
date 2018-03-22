@@ -6,12 +6,13 @@ const initState = {
   error: false,
   success: true,
   message: null,
+  recaptcha: false,
 };
 
 export default (state = initState, action) => {
   switch (action.type) {
     case 'TOGGLE_SIGN_IN':
-      state = { ...state, toggleSignIn: action.payload };
+      state = { ...state, toggleSignIn: action.payload,recaptcha: false,username: '',password: '' };
       return state;
     case 'SET_SIGN_IN_USERNAME':
       state = { ...state, username: action.payload };
@@ -32,6 +33,8 @@ export default (state = initState, action) => {
       }
       state = { ...state, toggleSignIn: true, loading: false, error: false, success: action.payload.data.success, message: action.payload.data.message, };
       return state;
+    case 'SET_RECAPTCHA':
+      state = { ...state, recaptcha: action.payload };
     default:
       return state;
   }
