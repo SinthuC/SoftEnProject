@@ -126,7 +126,7 @@ const enchance = compose(
 const Register = props => {
 
   const checkName = () => {
-    let regex = new RegExp('^[A-Za-z ]{1,40}$');
+    let regex = new RegExp('^[A-Za-z]{1,40} [A-Za-z]{1,40}$');
     if (props.name.length > 0) {
       if (regex.test(props.name)) {
         props.setNameAlert({
@@ -137,7 +137,7 @@ const Register = props => {
       } else {
         props.setNameAlert({
           status: true,
-          message: "Please match the requested format. (must contain a-z lower and upper case)"
+          message: "Please match the requested format. (must contain a-z lower and upper case and white space)"
         });
         return false;
       }
@@ -160,7 +160,7 @@ const Register = props => {
             personal_id: props.pid,
           }
         );
-        if(pid.data.success) {
+        if (pid.data.success) {
           props.setPidAlert({
             status: false,
             message: ""
@@ -213,7 +213,7 @@ const Register = props => {
             username: props.username,
           }
         );
-        if(username.data.success) {
+        if (username.data.success) {
           props.setUsernameAlert({
             status: false,
             message: ""
@@ -255,7 +255,7 @@ const Register = props => {
       } else {
         props.setPasswordAlert({
           status: true,
-          message: "Please match the requested format. (must contain a-z lower and upper case or number)"
+          message: "Please match the requested format. (must contain a-z lower and upper case, number, -, _ and minimum 16 characters.)"
         });
         return false;
       }
@@ -287,11 +287,64 @@ const Register = props => {
 
   const checkBirthDate = () => {
     if (props.birthDate.length > 0) {
-      props.setBirthDateAlert({
-        status: false,
-        message: ""
-      });
-      return true;
+      let today = new Date();
+      let dd = today.getDate();
+      let mm = today.getMonth()+1;
+      let yyyy = today.getFullYear();
+      let birthdate = document.getElementById("birthdate").value.split("-");
+      
+      if (dd < 10) {
+        dd = '0' + dd
+      }
+      if (mm < 10) {
+        mm = '0' + mm
+      }
+
+      console.log(yyyy)
+      if (yyyy - birthdate[0] > 20) {
+        props.setBirthDateAlert({
+          status: false,
+          message: ""
+        });
+        return true;
+      } else if (yyyy - birthdate[0] == 20) {
+        if (mm > birthdate[1]) {
+          console.log("month >");
+          props.setBirthDateAlert({
+            status: false,
+            message: ""
+          });
+          return true;
+        } else if(mm == birthdate[1]) {
+          if (dd >= birthdate[2]) {
+            props.setBirthDateAlert({
+              status: false,
+              message: ""
+            });
+            return true;
+
+          } else {
+            props.setBirthDateAlert({
+              status: true,
+              message: "Your age must be 20 years old or more"
+            });
+            return false;
+          }
+        } else {
+          props.setBirthDateAlert({
+            status: true,
+            message: "Your age must be 20 years old or more"
+          });
+          return false;
+        }
+      } else {
+        props.setBirthDateAlert({
+          status: true,
+          message: "Your age must be 20 years old or more"
+        });
+        return false;
+      }
+
     } else {
       props.setBirthDateAlert({
         status: true,
@@ -352,7 +405,7 @@ const Register = props => {
   const checkEmail = async () => {
     let regex = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
     if (props.email.length > 0) {
-      
+
       if (regex.test(props.email)) {
         const email = await axios.post(
           `http://10.199.66.227/SoftEn2018/Sec01_NMB/api/user/checkemail.php`,
@@ -360,7 +413,7 @@ const Register = props => {
             email: props.email,
           }
         );
-        if(email.data.success) {
+        if (email.data.success) {
           props.setEmailAlert({
             status: false,
             message: ""
@@ -424,8 +477,8 @@ const Register = props => {
                   }
                 }
                 console.log(submit);
-                if(submit) {
-                  const register  = await axios.post(
+                if (submit) {
+                  const register = await axios.post(
                     `http://10.199.66.227/SoftEn2018/Sec01_NMB/api/user/create.php`,
                     {
                       username: props.username,
@@ -444,7 +497,7 @@ const Register = props => {
                     }
                   );
                   console.log(register.data);
-                  if(register.data.success) {
+                  if (register.data.success) {
                     props.toggleSuccess(false);
                   }
                 }
