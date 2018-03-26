@@ -39,7 +39,7 @@ const PolicyModal = props => (
        
       </ModalBody>
       <ModalFooter>
-        <Button color="secondary" id="cancel" onClick={() => props.togglePolicy(props.signup.togglePolicy)}>Cancel</Button>
+        <Button color="secondary" id="close" onClick={() => props.togglePolicy(props.signup.togglePolicy)}>Close</Button>
       </ModalFooter>
   </Modal>
 );
