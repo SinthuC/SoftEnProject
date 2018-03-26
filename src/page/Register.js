@@ -204,7 +204,7 @@ const Register = props => {
 
 
   const checkUsername = async () => {
-    let regex = new RegExp('^[A-Za-z0-9]{1,50}$');
+    let regex = new RegExp('^.{1,}$');
     if (props.username.length > 0) {
       if (regex.test(props.username)) {
         const username = await axios.post(
@@ -748,8 +748,10 @@ const Register = props => {
                       value={props.agree}
                       onChange={() => props.setAgree(!props.agree)}
                     />{' '}
-                    Agree <span className="register-link" onClick={() => props.togglePolicy(props.signup.togglePolicy)}>Policy</span>
+                    Agree
                   </Label>
+                  <span 
+                    className="register-link" id="policy" onClick={() => props.togglePolicy(props.signup.togglePolicy)}> Policy</span>
                 </FormGroup>
 
                 <FormGroup>
