@@ -57,6 +57,7 @@ const enchance = compose(
 
 const SignInModal = props => {
   const checkUsername = async () => {
+    console.log(props.signin.username);
     if (props.username.length == 0) {
       props.setUsernameAlert({
         status: true,
@@ -104,7 +105,7 @@ const SignInModal = props => {
           }
         }
         if (submit) {
-          await props.onSignIn(props.signin.username, props.signin.password);
+          await props.onSignIn(props.username, props.password);
         }
       }}>
         <ModalBody>
