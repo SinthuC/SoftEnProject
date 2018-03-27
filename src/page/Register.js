@@ -204,8 +204,8 @@ const Register = props => {
 
 
   const checkUsername = async () => {
-    let regex = new RegExp('^.{1,}$');
-    if (props.username.length > 0) {
+    let regex = new RegExp('^[^ ]+(?=.*?[^ ])[^ ]*$');
+    if (props.username.length > 0 ) {
       if (regex.test(props.username)) {
         const username = await axios.post(
           `http://10.199.66.227/SoftEn2018/Sec01_NMB/api/user/checkusername.php`,
@@ -229,7 +229,7 @@ const Register = props => {
       } else {
         props.setUsernameAlert({
           status: true,
-          message: "Please match the requested format. (must contain a-z lower and upper case or number)"
+          message: "Please match the requested format. (not allow white space)"
         });
         return false;
       }
@@ -244,7 +244,7 @@ const Register = props => {
 
 
   const checkPassword = () => {
-    let regex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?-)(?=.*?_).{16,}$');
+    let regex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?-)(?=.*?_)(?=.*?[^ ])[^ ]{16,}$');
     if (props.password.length > 0) {
       if (regex.test(props.password)) {
         props.setPasswordAlert({
