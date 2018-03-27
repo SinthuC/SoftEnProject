@@ -158,6 +158,7 @@ const SignInModal = props => {
           <FormGroup>
             
            <Recaptcha
+              id="recaptcha"
               sitekey="6Lc2Nk4UAAAAACAYJLpq3AjyvMkeNFJ9B-dxupUZ"
               render="explicit"
               verifyCallback={() => {
