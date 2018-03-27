@@ -37,13 +37,16 @@ const enchance = compose(
   connect(
     state => ({
       auth: state.auth,
+      signin: state.signin,
     }),
     {
       toggleSignIn,
       signOut,
     },
   ),
-  withState("isOpen", "toggle", false)
+  withState("isOpen", "toggle", false),
+
+
 );
 
 const NavBar = props => {
@@ -91,17 +94,20 @@ const NavBar = props => {
                 </NavItem>
               </Nav>
             ) : (
-                <Nav className="ml-auto" navbar>
-                  <NavItem className="m-2">
-                    <Button
+
+                <Nav className="ml-auto" vertical>
+                  <NavItem>
+                    <NavLink
+                      href="#"
+                      className="navbar-link"
                       id="signout"
                       outline
-                      color="success"
                       onClick={async () => {
                         await signOut();
                         localStorage.clear();
                         window.location.href = `${process.env.PUBLIC_URL}/`;
-                      }}>Sign Out</Button>
+                      }}>Sign Out
+                      </NavLink>
                   </NavItem>
                 </Nav>
               )
