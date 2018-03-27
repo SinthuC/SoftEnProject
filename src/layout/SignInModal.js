@@ -153,10 +153,11 @@ const SignInModal = props => {
               value={props.password}
               onBlur={() => checkPassword()}
             />
-          <div><a href="#">Forget Password</a></div>
+            <div><a href="#">Forget Password</a></div>
           </FormGroup>
           <FormGroup>
-            <Recaptcha
+            
+           <Recaptcha
               sitekey="6Lc2Nk4UAAAAACAYJLpq3AjyvMkeNFJ9B-dxupUZ"
               render="explicit"
               verifyCallback={() => {
@@ -166,6 +167,7 @@ const SignInModal = props => {
                 props.setRecaptcha(false);
               }}
             />
+            
           </FormGroup>
         </ModalBody>
         <ModalFooter>
