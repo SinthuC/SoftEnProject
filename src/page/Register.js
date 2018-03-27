@@ -243,7 +243,7 @@ const Register = props => {
   }
 
 
-  const checkPassword = (eleID) => {
+  const checkPassword = () => {
     let regex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?-)(?=.*?_).{16,}$');
     if (props.password.length > 0) {
       if (regex.test(props.password)) {
@@ -270,16 +270,24 @@ const Register = props => {
 
 
   const checkCPassword = () => {
-    if (props.password == props.cpassword) {
-      props.setCPasswordAlert({
-        status: false,
-        message: ""
-      });
-      return true;
-    } else {
+    if (props.cpassword.length > 0) {
+      if (props.password == props.cpassword) {
+        props.setCPasswordAlert({
+          status: false,
+          message: ""
+        });
+        return true;
+      } else {
+        props.setCPasswordAlert({
+          status: true,
+          message: "Password not match."
+        });
+        return false;
+      }
+    }else{
       props.setCPasswordAlert({
         status: true,
-        message: "Password not match."
+        message: "Please fill out this field."
       });
       return false;
     }
@@ -289,10 +297,10 @@ const Register = props => {
     if (props.birthDate.length > 0) {
       let today = new Date();
       let dd = today.getDate();
-      let mm = today.getMonth()+1;
+      let mm = today.getMonth() + 1;
       let yyyy = today.getFullYear();
       let birthdate = document.getElementById("birthdate").value.split("-");
-      
+
       if (dd < 10) {
         dd = '0' + dd
       }
@@ -315,7 +323,7 @@ const Register = props => {
             message: ""
           });
           return true;
-        } else if(mm == birthdate[1]) {
+        } else if (mm == birthdate[1]) {
           if (dd >= birthdate[2]) {
             props.setBirthDateAlert({
               status: false,
@@ -326,21 +334,21 @@ const Register = props => {
           } else {
             props.setBirthDateAlert({
               status: true,
-              message: "Your age must be 20 years old or more"
+              message: "Your age must be 20 years old or more."
             });
             return false;
           }
         } else {
           props.setBirthDateAlert({
             status: true,
-            message: "Your age must be 20 years old or more"
+            message: "Your age must be 20 years old or more."
           });
           return false;
         }
       } else {
         props.setBirthDateAlert({
           status: true,
-          message: "Your age must be 20 years old or more"
+          message: "Your age must be 20 years old or more."
         });
         return false;
       }
@@ -386,7 +394,7 @@ const Register = props => {
     }
   }
 
-  const checkAns3 = (eleID) => {
+  const checkAns3 = () => {
     if (props.ans3.length > 0) {
       props.setAns3Alert({
         status: false,
@@ -750,7 +758,7 @@ const Register = props => {
                     />{' '}
                     Agree
                   </Label>
-                  <span 
+                  <span
                     className="register-link" id="policy" onClick={() => props.togglePolicy(props.signup.togglePolicy)}> Policy</span>
                 </FormGroup>
 
