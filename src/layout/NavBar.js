@@ -76,6 +76,7 @@ const NavBar = props => {
               <Nav className="ml-auto" vertical>
                 <NavItem>
                   <NavLink
+                    id="signin"
                     href="#"
                     className="navbar-link"
                     onClick={() => toggleSignIn()}
