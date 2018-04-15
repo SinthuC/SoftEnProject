@@ -151,9 +151,20 @@ const Register = props => {
   }
 
   const checkPid = async () => {
-    let regex = new RegExp('^[a-zA-Z0-9]{8,13}$');
+    let regex = new RegExp('^[a-zA-Z0-9]{8,12}$');
+    let isPidCorrect = false;
     if (props.pid.length > 0) {
-      if (regex.test(props.pid)) {
+      if( props.pid.length == 13){
+        let sum=0;
+        for(let i=0; i < 12; i++) sum += parseFloat(props.pid.charAt(i))*(13-i);
+        if((11-sum%11)%10==parseFloat(props.pid.charAt(12))){
+          console.log("true");
+          isPidCorrect = true;
+        }else{
+          console.log(props.pid.charAt(1));
+        }
+      }
+      if (regex.test(props.pid) || isPidCorrect) {
         const pid = await axios.post(
           `http://10.199.66.227/SoftEn2018/Sec01_NMB/api/user/checkpid.php`,
           {
@@ -506,7 +517,7 @@ const Register = props => {
                   );
                   console.log(register.data);
                   if (register.data.success) {
-                    props.toggleSuccess(false);
+                    window.location.href = `${process.env.PUBLIC_URL}/#/registersuccess`;
                   }
                 }
               }}>
