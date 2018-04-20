@@ -16,6 +16,7 @@ import {
   Input,
   Alert
 } from 'reactstrap';
+import axios from 'axios';
 import Recaptcha from 'react-recaptcha';
 import { connect } from 'react-redux';
 import {
@@ -28,11 +29,15 @@ import {
 import {
   setToken
 } from '../redux/action/auth';
+import {
+  setForgetUsername,
+} from '../redux/action/forgetPassword'
 
 const enchance = compose(
   connect(
     state => ({
       signin: state.signin,
+      forgetPassword: state.forgetPassword,
     }),
     {
       toggleSignIn,
@@ -41,6 +46,7 @@ const enchance = compose(
       onSignIn,
       setToken,
       setRecaptcha,
+      setForgetUsername,
     },
   ),
   withState("username", "setUsername", ""),
@@ -90,6 +96,7 @@ const SignInModal = props => {
   }
 
   return (
+
     <Modal isOpen={props.signin.toggleSignIn} toggle={props.toggleSignIn}>
       <ModalHeader>Sign In</ModalHeader>
       <Form onSubmit={async e => {
@@ -153,11 +160,43 @@ const SignInModal = props => {
               value={props.password}
               onBlur={() => checkPassword()}
             />
-            <div><a href="#">Forget Password</a></div>
+            <div><a
+              id="forgetPassword"
+              href="javascript:void(0);"
+              onClick={async () => {
+                if (props.username.length > 0) {
+                  const username = await axios.post(
+                    `http://10.199.66.227/SoftEn2018/Sec01_NMB/api/user/checkusernameresetpw.php`,
+                    {
+                      username: props.username,
+                    }
+                  );
+                  if (username.data.success) {
+                    //props.toggleSignIn(true);
+                    props.setUsernameAlert({
+                      status: true,
+                      message: "Username does not exist."
+                    })
+                  } else {
+                    props.setForgetUsername(props.username);
+                    console.log(props.forgetPassword.username);
+                    window.location.href = `${process.env.PUBLIC_URL}/#/recoverpassword`;
+                    props.toggleSignIn(true);
+                  }
+                } else {
+                  props.setUsernameAlert({
+                    status: true,
+                    message: "Please fill out this field."
+                  });
+                }
+                }}>
+              Forget Password?
+                    </a>
+            </div>
           </FormGroup>
           <FormGroup>
-            
-           <Recaptcha
+
+            <Recaptcha
               id="recaptcha"
               sitekey="6Lc2Nk4UAAAAACAYJLpq3AjyvMkeNFJ9B-dxupUZ"
               render="explicit"
@@ -168,7 +207,7 @@ const SignInModal = props => {
                 props.setRecaptcha(false);
               }}
             />
-            
+
           </FormGroup>
         </ModalBody>
         <ModalFooter>
