@@ -16,14 +16,14 @@ const styles = {
   }
 }
 
-const Page403 = () => (
+const RegisterSuccess = () => (
   <Container style={styles.content}>
     <h2>สำเร็จ!</h2>
     <h3>กรุณารอข้อความยืนยันจาก Admin</h3>
-    <Button outline color="secondary" onClick={() => window.location.href = `${process.env.PUBLIC_URL}/#/register`}>
+    <Button id="ok" outline color="secondary" onClick={() => window.location.href = `${process.env.PUBLIC_URL}`}>
       OK
     </Button>
   </Container>
 );
 
-export default Page403;
+export default RegisterSuccess;
