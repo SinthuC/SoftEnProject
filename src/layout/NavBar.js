@@ -95,8 +95,24 @@ const NavBar = props => {
                 </NavItem>
               </Nav>
             ) : (
-
+               
                 <Nav className="ml-auto" vertical>
+                 {!props.auth.admin==1 ? (      
+                    <NavItem>
+                      สวัสดี
+                      <NavLink
+                        href="#"
+                        className="navbar-link"
+                        id="profile"
+                        outline
+                        onClick={async () => {
+                          window.location.href = `${process.env.PUBLIC_URL}/`;
+                        }}>
+                        username
+                      </NavLink>
+                    </NavItem>
+                )
+                  : false}
                   <NavItem>
                     <NavLink
                       href="#"
@@ -120,43 +136,43 @@ const NavBar = props => {
 
 
           {
-            props.auth.admin ? 
-            (
-              <div style={{ display: "flex" }}>
-                <NavItem className={location.pathname == "/" ? "navbar-btn-selected" : "navbar-btn"} >
-                  <NavLink href="#" className="navbar-link">Home</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="#" className="navbar-link">Manage News & Announcement</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="#" className="navbar-link">Manage User</NavLink>
-                </NavItem>
-              </div>
-            ) :
-            (
-              <div style={{ display: "flex" }}>
-                <NavItem className={location.pathname == "/" ? "navbar-btn-selected" : "navbar-btn"} onMouseEnter={() => toggle(toggle => !toggle)}>
-                  <Dropdown isOpen={isOpen} toggle={() => toggle(toggle => !toggle)} onClick={() => window.location.href = `${process.env.PUBLIC_URL}/`} >
-                    <DropdownToggle style={{ backgroundColor: "rgba(0,0,0,.0)", border: 0 }} caret>
-                      Home
+            props.auth.admin ?
+              (
+                <div style={{ display: "flex" }}>
+                  <NavItem className={location.pathname == "/" ? "navbar-btn-selected" : "navbar-btn"} >
+                    <NavLink href="#" className="navbar-link">Home</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="#" className="navbar-link">Manage News & Announcement</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="#" className="navbar-link">Manage User</NavLink>
+                  </NavItem>
+                </div>
+              ) :
+              (
+                <div style={{ display: "flex" }}>
+                  <NavItem className={location.pathname == "/" ? "navbar-btn-selected" : "navbar-btn"} onMouseEnter={() => toggle(toggle => !toggle)}>
+                    <Dropdown isOpen={isOpen} toggle={() => toggle(toggle => !toggle)} onClick={() => window.location.href = `${process.env.PUBLIC_URL}/`} >
+                      <DropdownToggle style={{ backgroundColor: "rgba(0,0,0,.0)", border: 0 }} caret>
+                        Home
                   </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem>News & Announcement</DropdownItem>
-                    </DropdownMenu>
-                  </Dropdown>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="#" className="navbar-link">Knowledge Resources</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="#" className="navbar-link">Events</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="#" className="navbar-link">About Us</NavLink>
-                </NavItem>
-              </div>
-            )
+                      <DropdownMenu>
+                        <DropdownItem>News & Announcement</DropdownItem>
+                      </DropdownMenu>
+                    </Dropdown>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="#" className="navbar-link">Knowledge Resources</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="#" className="navbar-link">Events</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="#" className="navbar-link">About Us</NavLink>
+                  </NavItem>
+                </div>
+              )
           }
         </Container>
       </Nav>
