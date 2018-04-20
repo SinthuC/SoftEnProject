@@ -17,10 +17,12 @@ import {
 import SlideShow from '../layout/SlideShow';
 import News from '../layout/News';
 import example from '../example.jpg';
-
 import {
   getNewsByLimit,
 } from '../redux/action/news';
+import {
+  toggleSignIn,
+} from '../redux/action/signin';
 
 const items = [
   {
@@ -60,16 +62,23 @@ const enchance = compose(
   connect(
     state => ({
       news: state.news,
-      auth: state.auth
+      auth: state.auth,
+      forgetPassword: state.forgetPassword,
+      signin: state.signin,
     }),
     {
-      getNewsByLimit
+      getNewsByLimit,
+      toggleSignIn,
     },
   ),
   withState('newsCount', 'setNewsCount', 10),
   lifecycle({
     componentDidMount() {
       this.props.getNewsByLimit(0, this.props.newsCount);
+      if(this.props.forgetPassword.reset){
+        this.props.toggleSignIn(false);
+
+      }
     }
   })
 );
