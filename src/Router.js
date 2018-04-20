@@ -21,7 +21,7 @@ const Router = props => (
     <Switch>
       <App>
         <Switch>
-          <Route exact path={`/`} component={props.auth.admin ? AdminHome : Home} />
+          <Route exact path={`/`} component={props.auth.admin==1 ? AdminHome : Home} />
           <Route exact path={`/register`} component={Register} />
           <Route exact path={`/registersuccess`} component={RegisterSuccess} />
           <Route exact path={`/recoverpassword`} component={RecoverPassword} />
