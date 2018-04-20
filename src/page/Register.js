@@ -513,6 +513,7 @@ const Register = props => {
                       answer1: props.ans1,
                       answer2: props.ans2,
                       answer3: props.ans3,
+                      token: md5(props.username+props.password),
                     }
                   );
                   console.log(register.data);
