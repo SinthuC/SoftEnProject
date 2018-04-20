@@ -16,6 +16,7 @@ import NavBar from './layout/NavBar';
 import PolicyModal from './layout/PolicyModal';
 import SignInModal from './layout/SignInModal';
 import SuccessModal from './layout/SuccessModal';
+import BannedModal from './layout/BannedModal';
 import Footer from './layout/Footer';
 
 
@@ -66,6 +67,7 @@ const App = props => {
       <PolicyModal />
       <SignInModal />
       <SuccessModal />
+      <BannedModal />
       <Footer />
     </div>
   );
