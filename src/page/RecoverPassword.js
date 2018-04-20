@@ -35,6 +35,7 @@ import {
   checkAnswer,
   changePassword,
   increaseFailed,
+  toggleBanned,
 } from '../redux/action/forgetPassword';
 import Page403 from './403';
 
@@ -70,6 +71,7 @@ const enchance = compose(
       checkAnswer,
       changePassword,
       increaseFailed,
+      toggleBanned,
     },
   ),withState("failedAlert", "setFailedAlert", {
     status: false,
@@ -115,7 +117,8 @@ const RecoverPassword = props => {
                     }
                   ).then(
                     () => {
-                      window.location.href = `${process.env.PUBLIC_URL}/#/`;
+                      props.toggleBanned(props.forgetPassword.toggleBanned);
+                      //window.location.href = `${process.env.PUBLIC_URL}/#/`;
                     }
                   )
                 } else {
