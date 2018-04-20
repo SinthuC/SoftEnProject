@@ -19,10 +19,10 @@ export default (state = initState, action) => {
     case 'CHECK_AUTH_FULFILLED':
       if (!action.payload.data.success) {
         localStorage.clear();
-        state = { ...state, loading: false, token: action.payload.data };
+        state = { ...state, loading: false, admin: false };
       }
       else {
-        state = { ...state, loading: false, admin: action.payload.data.message ,token: action.payload.data };
+        state = { ...state, loading: false, admin: action.payload.data.message.admin };
       }
       return state;
     case 'SIGN_OUT':
