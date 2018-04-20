@@ -76,6 +76,11 @@ const changePassword = (username,password, history) => {
   };
 };
 
+const toggleBanned = (isOpen) => ({
+  type: 'TOGGLE_BANNED',
+  payload: !isOpen,
+});
+
 export {
   getUserByUsername,
   setForgetUsername,
@@ -87,4 +92,5 @@ export {
   checkAnswer,
   changePassword,
   increaseFailed,
+  toggleBanned,
 };

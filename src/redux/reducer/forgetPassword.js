@@ -13,10 +13,14 @@ const initState = {
   password: '',
   cpassword: '',
   reset: false,
+  toggleBanned: false,
 };
 
 export default (state = initState, action) => {
   switch (action.type) {
+    case 'TOGGLE_BANNED':
+      state = { ...state, toggleBanned: action.payload };
+      return state;
     case 'SET_FORGET_USERNAME':
       state = { ...state, username: action.payload };
       return state;
