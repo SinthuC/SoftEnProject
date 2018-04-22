@@ -2,6 +2,7 @@ import React from 'react';
 import {
   compose,
   withState,
+  lifecycle,
 } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import {
@@ -45,8 +46,6 @@ const enchance = compose(
     },
   ),
   withState("isOpen", "toggle", false),
-
-
 );
 
 const NavBar = props => {
@@ -95,24 +94,24 @@ const NavBar = props => {
                 </NavItem>
               </Nav>
             ) : (
-               
+
                 <Nav className="ml-auto" vertical>
-                 {!props.auth.admin==1 ? (      
+                  {!(props.auth.admin == 1) ? (
                     <NavItem>
-                      สวัสดี
-                      <NavLink
-                        href="#"
+                      สวัสดี {' '}
+                      <a
+                        href="javascript:void(0);"
                         className="navbar-link"
                         id="profile"
                         outline
                         onClick={async () => {
-                          window.location.href = `${process.env.PUBLIC_URL}/`;
+                          window.location.href = `${process.env.PUBLIC_URL}/#/profile`;
                         }}>
-                        username
-                      </NavLink>
+                        {props.auth.username}
+                      </a>
                     </NavItem>
-                )
-                  : false}
+                  )
+                    :null}
                   <NavItem>
                     <NavLink
                       href="#"
@@ -136,16 +135,16 @@ const NavBar = props => {
 
 
           {
-            props.auth.admin ?
+            props.auth.admin == 1 ?
               (
                 <div style={{ display: "flex" }}>
-                  <NavItem className={location.pathname == "/" ? "navbar-btn-selected" : "navbar-btn"} >
+                  <NavItem className={location.pathname == "/" ? "navbar-btn-selected" : null } >
                     <NavLink href="#" className="navbar-link">Home</NavLink>
                   </NavItem>
-                  <NavItem>
+                  <NavItem >
                     <NavLink href="#" className="navbar-link">Manage News & Announcement</NavLink>
                   </NavItem>
-                  <NavItem>
+                  <NavItem className={location.pathname == "manageuser" ? "navbar-btn-selected" : null}>
                     <NavLink href="#" className="navbar-link">Manage User</NavLink>
                   </NavItem>
                 </div>
