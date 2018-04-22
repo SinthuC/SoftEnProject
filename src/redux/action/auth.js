@@ -20,8 +20,18 @@ const signOut = () => ({
   payload: null,
 });
 
+const readByToken = (token) =>({
+  type: 'READ_BY_TOKEN',
+  payload: axios.post(
+    `http://10.199.66.227/SoftEn2018/Sec01_NMB/api/user/readbytoken.php`,
+    {
+      token: token,
+    }
+  )
+});
 export {
   checkAuth,
   setToken,
   signOut,
+  readByToken,
 };
