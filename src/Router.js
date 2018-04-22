@@ -15,6 +15,9 @@ import Register from './page/Register';
 import RegisterSuccess from './page/RegisterSuccess';
 import RecoverPassword from './page/RecoverPassword';
 import ChangePassword from './page/ChangePassword';
+import Profile from './page/Profile';
+import ManageUser from './page/ManageUser';
+import AdminViewProfile from './page/AdminViewProfile';
 
 const Router = props => (
   <AppRouter basename={`${process.env.PUBLIC_URL}/`}>
@@ -23,6 +26,9 @@ const Router = props => (
         <Switch>
           <Route exact path={`/`} component={props.auth.admin==1 ? AdminHome : Home} />
           <Route exact path={`/register`} component={Register} />
+          <Route exact path={`/profile`} component={Profile} />
+          <Route exact path={`/adminviewprofile/:username`} component={AdminViewProfile} />
+          <Route exact path={`/manageuser`} component={ManageUser} />
           <Route exact path={`/registersuccess`} component={RegisterSuccess} />
           <Route exact path={`/recoverpassword`} component={RecoverPassword} />
           <Route exact path={`/changepassword`} component={ChangePassword} />
