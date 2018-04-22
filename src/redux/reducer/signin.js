@@ -12,7 +12,7 @@ const initState = {
 export default (state = initState, action) => {
   switch (action.type) {
     case 'TOGGLE_SIGN_IN':
-      state = { ...state, toggleSignIn: action.payload,recaptcha: false,username: '',password: '' };
+      state = { ...state, toggleSignIn: action.payload,recaptcha: false,username: '', password: '' };
       return state;
     case 'SET_SIGN_IN_USERNAME':
       state = { ...state, username: action.payload };
@@ -31,7 +31,7 @@ export default (state = initState, action) => {
         localStorage.setItem("token", action.payload.data.message);
         window.location.href = `${process.env.PUBLIC_URL}/`;
       }
-      state = { ...state, toggleSignIn: true, loading: false, error: false, success: action.payload.data.success, message: action.payload.data.message, };
+      state = { ...state, toggleSignIn: true, loading: false, error: false, success: action.payload.data.success, message: action.payload.data.message,  };
       return state;
     case 'SET_RECAPTCHA':
       state = { ...state, recaptcha: action.payload };
