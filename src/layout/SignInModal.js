@@ -49,8 +49,6 @@ const enchance = compose(
       setForgetUsername,
     },
   ),
-  withState("username", "setUsername", ""),
-  withState("password", "setPassword", ""),
   withState("usernameAlert", "setUsernameAlert", {
     status: false,
     message: ""
@@ -64,7 +62,7 @@ const enchance = compose(
 const SignInModal = props => {
   const checkUsername = async () => {
     console.log(props.signin.username);
-    if (props.username.length == 0) {
+    if (props.signin.username.length == 0) {
       props.setUsernameAlert({
         status: true,
         message: "Please fill out this field."
@@ -80,7 +78,7 @@ const SignInModal = props => {
   }
 
   const checkPassword = async () => {
-    if (props.password.length == 0) {
+    if (props.signin.password.length == 0) {
       props.setPasswordAlert({
         status: true,
         message: "Please fill out this field."
@@ -112,7 +110,8 @@ const SignInModal = props => {
           }
         }
         if (submit) {
-          await props.onSignIn(props.username, props.password);
+          props.setForgetUsername(props.signin.username);
+          await props.onSignIn(props.signin.username, props.signin.password);
         }
       }}>
         <ModalBody>
@@ -139,7 +138,7 @@ const SignInModal = props => {
               maxLength={20}
               onChange={e => props.setUsername(e.target.value)}
               disabled={props.signin.loading}
-              value={props.username}
+              value={props.signin.username}
               onBlur={() => checkUsername()}
             />
           </FormGroup>
@@ -157,18 +156,18 @@ const SignInModal = props => {
               value={props.signin.password}
               onChange={e => props.setPassword(e.target.value)}
               disabled={props.signin.loading}
-              value={props.password}
+              value={props.signin.password}
               onBlur={() => checkPassword()}
             />
             <div><a
               id="forgetPassword"
               href="javascript:void(0);"
               onClick={async () => {
-                if (props.username.length > 0) {
+                if (props.signin.username.length > 0) {
                   const username = await axios.post(
                     `http://10.199.66.227/SoftEn2018/Sec01_NMB/api/user/checkusernameresetpw.php`,
                     {
-                      username: props.username,
+                      username: props.signin.username,
                     }
                   );
                   if (username.data.success) {
@@ -178,8 +177,7 @@ const SignInModal = props => {
                       message: "Username does not exist."
                     })
                   } else {
-                    props.setForgetUsername(props.username);
-                    console.log(props.forgetPassword.username);
+                    props.setForgetUsername(props.signin.username);
                     window.location.href = `${process.env.PUBLIC_URL}/#/recoverpassword`;
                     props.toggleSignIn(true);
                   }
