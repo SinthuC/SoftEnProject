@@ -8,6 +8,7 @@ import {
 } from 'recompose';
 import axios from 'axios';
 import md5 from 'md5';
+import FileBase64 from '../layout/react-file-base64';
 import {
   Button,
   Modal,
@@ -121,6 +122,8 @@ const enchance = compose(
   }),
 
 )
+
+
 
 
 const Register = props => {
@@ -564,7 +567,15 @@ const Register = props => {
                       props.pidPicAlert.message
                     }
                   </div>
-                  <Input
+                  <FileBase64
+                    id="pidPic" 
+                    multiple={ false }
+                    onDone={ (file) => {
+                      props.setPidPic(file.base64);
+                      console.log(file.base64);
+                    }}
+                  />
+                  {/*<Input
                     type="file"
                     name="pidPic"
                     id="pidPic"
@@ -573,11 +584,11 @@ const Register = props => {
                       await props.setPidPic(e.target.files[0]);
                     }
                     }
-                  />
+                  />*/}
                   <FormText color="muted">
                     Upload your copy of ID card or Passport
                     {
-                      props.pidPic != null ? (<img src={props.pidPic} alt="" />) : false
+                      props.pidPic != null ? (<img src={props.pidPic} alt="" width={180} />) : false
                     }
                   </FormText>
                 </FormGroup>

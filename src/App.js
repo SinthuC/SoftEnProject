@@ -46,7 +46,7 @@ const enchance = compose(
     },
   ),
   lifecycle({
-    componentDidMount() {
+    componentWillMount() {
       if(localStorage.hasOwnProperty("token"))
         this.props.checkAuth(this.props.auth.token);
     }
