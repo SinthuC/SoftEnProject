@@ -67,7 +67,7 @@ const changePassword = (username,password, history) => {
     {
       username: username,
       password: md5(password),
-      token: md5(username+password),
+      token: md5(username+md5(password)),
     }
   );
 

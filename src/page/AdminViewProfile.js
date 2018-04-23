@@ -120,6 +120,7 @@ const AdminViewProfile = props => {
 
                   <FormGroup>
                     <Label htmlFor="pidPic">Personal ID / Passport Number Image</Label>
+                    <img src={props.userDetail.personal_image} alt="" width={300} />
                   </FormGroup>
 
                   <FormGroup>

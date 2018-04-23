@@ -506,7 +506,7 @@ const Register = props => {
                       username: props.username,
                       password: md5(props.password),
                       personal_id: props.pid,
-                      personal_image: props.pidPic.name,
+                      personal_image: props.pidPic,
                       flname: props.name,
                       email: props.email,
                       birthday: props.birthDate,
@@ -516,7 +516,7 @@ const Register = props => {
                       answer1: props.ans1,
                       answer2: props.ans2,
                       answer3: props.ans3,
-                      token: md5(props.username+props.password),
+                      token: md5(props.username+md5(props.password)),
                     }
                   );
                   console.log(register.data);
